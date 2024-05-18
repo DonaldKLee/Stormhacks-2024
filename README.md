@@ -10,3 +10,5 @@ cd react-chrome-ext
 2. Enable dev mode
 3. Load unpack
 4. Click on react-chrome-ext/dist
+
+Remember to do `npm run build` after saving
