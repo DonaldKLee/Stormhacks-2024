@@ -5,7 +5,7 @@ function Popup() {
     <div className="container">
       Hello World
 
-      <a href="../testing/index.html">Testing</a>
+      <a href="../testing/index.html" target='_blank'>Testing</a>
     </div>
   );
 }
