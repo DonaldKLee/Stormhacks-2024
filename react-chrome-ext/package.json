@@ -18,6 +18,7 @@
   },
   "scripts": {
     "build": "webpack --config webpack.config.js",
+    "buildTesting": "webpack --config webpack.config.test.js",
     "watch": "webpack -w --config webpack.config.js"
   },
   "eslintConfig": {
