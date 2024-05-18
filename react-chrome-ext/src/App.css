@@ -9,3 +9,18 @@
   background-color: blue;
 
 }
+
+.title {
+  width: 50 px;
+  height: 50 px;
+  background-color: orange;
+
+}
+
+.button-right {
+  right: 100px
+}
+
+#header span {
+  margin: 0 20px;
+}
