@@ -1,6 +1,5 @@
 import './App.css';
 
-
 function Popup() {
   return (
     <div className="container">
