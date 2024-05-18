@@ -1,0 +1,16 @@
+{
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "name": "Stormhacks 2024",
+    "description": "AHHHH",
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "React Chrome Extension"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["src/js/background.js"]
+        }
+    ]
+}
