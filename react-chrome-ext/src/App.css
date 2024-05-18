@@ -6,5 +6,25 @@
 .container {
   width: 15rem;
   height: 15rem;
+<<<<<<< HEAD
   /* background-color: blue; */
+=======
+  background-color: blue;
+
+}
+
+.title {
+  width: 50 px;
+  height: 50 px;
+  background-color: orange;
+
+}
+
+.button-right {
+  right: 100px
+}
+
+#header span {
+  margin: 0 20px;
+>>>>>>> 181009a9564a0502a461aad7cac8bfceb4741809
 }
