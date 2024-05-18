@@ -1,6 +1,7 @@
 import './App.css';
 
-function App() {
+
+function Popup() {
   return (
     <div className="container">
       Hello World
@@ -8,4 +9,4 @@ function App() {
   );
 }
 
-export default App;
+export default Popup;
