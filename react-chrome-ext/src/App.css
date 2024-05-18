@@ -6,7 +6,6 @@
 .container {
   width: 15rem;
   height: 15rem;
-<<<<<<< HEAD
   background-color: blue;
 
 }
@@ -24,7 +23,4 @@
 
 #header span {
   margin: 0 20px;
-=======
-  /* background-color: blue; */
->>>>>>> refs/remotes/origin/main
 }

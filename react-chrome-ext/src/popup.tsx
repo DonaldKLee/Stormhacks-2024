@@ -1,7 +1,7 @@
 import './App.css';
+import TestingComponents from "./testingComponents";
 import Switch from '@mui/material/Switch';
 
-<<<<<<< HEAD
 const label = { inputProps: { 'aria-label': 'Size switch demo' } };
 
 function Popup() {
@@ -22,14 +22,6 @@ function Popup() {
         <span><Switch {...label} disabled defaultChecked size="small" /></span>
       </div>
 
-=======
-function Popup() {
-  return (
-    <div className="container">
-      Hello World
-
-      <a href="../testing/index.html" target='_blank'>Testing</a>
->>>>>>> refs/remotes/origin/main
     </div>
 
   );
