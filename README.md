@@ -1,4 +1,4 @@
-# Stormhacks-2024
+# HackerHare
 By: Donald, Melvin, Tracy, Tracy
 
 Set up
