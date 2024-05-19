@@ -1,11 +1,11 @@
 
-console.log("testing server")
-fetch('http://localhost:3000/')
-    .then(response => response.text())
-    .then(data => {
-        console.log(data);
-        alert(data);
-    });
+// console.log("testing server")
+// fetch('http://localhost:3000/')
+//     .then(response => response.text())
+//     .then(data => {
+//         console.log(data);
+//         alert(data);
+//     });
 
 function getRandomNumber(min, max) {
     return Math.random() * (max - min) + min;
@@ -68,8 +68,6 @@ function changeTelephone() {
         telInput.addEventListener("input", function (event) {
             document.getElementById("telInput" + telInputCounter).innerHTML = event.target.value;
         });
-
-        // telInputCounter++; // Increment the counter
     });
 }
 
@@ -81,7 +79,7 @@ function changePassword() {
         // Calculate the number of bunnies needed to cover the input form
         const inputWidth = pass.offsetWidth;
         const bunnyHeight = pass.offsetHeight;
-        const bunnyWidth = bunnyHeight/1.5;
+        const bunnyWidth = bunnyHeight / 1.5;
 
         const numBunnies = Math.ceil(inputWidth / bunnyWidth / 2);
 
@@ -228,28 +226,6 @@ function buttonMovement() {
         });
     }
 }
-
-    // buttons.forEach(function (submitButton) {
-        // submitButton.disabled = true;
-
-        // let numClicks = 0;
-        // var changeX = 64;
-        // var changeY = 16;
-        // if (numClicks < 3) {
-        //     // event.preventDefault();
-        // } else {
-        //     changeX = getRandomNumber(changeX, submitButton.left);
-        //     changeY = getRandomNumber(changeY, submitButton.top);
-        //     left = "changeX px";
-        //     top = "changeY px";
-        //     submitButton.disabled = false;
-        // }
-
-        // function getRandomNumber(min, max) {
-        //     return Math.random() * (max - min) + min;
-        // }
-    // });
-// }
 
 buttonMovement(); // must be before change password so the button isn't modified
 changeCheckbox();
