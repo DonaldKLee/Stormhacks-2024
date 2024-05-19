@@ -7,7 +7,9 @@ fetch('http://localhost:3000/')
         alert(data);
     });
 
-const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+function getRandomNumber(min, max) {
+    return Math.random() * (max - min) + min;
+}
 
 function changeCheckbox() {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -24,20 +26,15 @@ function changeCheckbox() {
 
 }
 
-const dates = document.querySelectorAll('input[type="date"]');
-
 //date selection --> button generative
 function selectDate() {
+    const dates = document.querySelectorAll('input[type="date"]');
     dates.forEach(function (date) {
         var buttonDate = document.createElement('button');
         buttonDate.textContent = 'Generate Date';
 
         function changeDate() {
             var randomDateAsInt = getRandomNumber(0, 99999999999);
-
-            function getRandomNumber(min, max) {
-                return Math.random() * (max - min) + min;
-            }
 
             date.value = new Date(randomDateAsInt * 1000).toISOString().split('T')[0];
         }
@@ -176,24 +173,29 @@ function modifyTextInput() {
 
 }
 
+let numClicks = 0;
+var changeX = 64;
+var changeY = 16;
+
 function buttonMovement() {
     const submitButtons = document.querySelectorAll('input[type="submit"]');
     submitButtons.forEach(function (submitButton) {
-        let numClicks = 0;
-        var changeX = 64;
-        var changeY = 16;
-        if (numClicks < 3) {
+        submitButton.addEventListener("click", function (event) {
             event.preventDefault();
-        } else {
+        });
+
+        if (numClicks < 3) {
             changeX = getRandomNumber(changeX, submitButton.left);
             changeY = getRandomNumber(changeY, submitButton.top);
-            left = "changeX px";
-            top = "changeY px";
+            submitButton.style.left = changeX + "px";
+            submitButton.style.top = changeY + "px";
+
+            numClicks++;
+
+        } else {
+            submitButton.removeEventListener("click", buttonMovement);
         }
 
-        function getRandomNumber(min, max) {
-            return Math.random() * (max - min) + min;
-        }
     });
 
 
