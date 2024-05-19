@@ -9,17 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const blacklistInput = document.getElementById("blacklist-input");
     const blacklistedSitesList = document.getElementById("blacklisted-sites");
 
-    // Check if the current URL matches any blacklisted sites
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      const currentUrl = tabs[0].url;
-      const isBlacklisted = isUrlBlacklisted(currentUrl);
-
-      if (isBlacklisted) {
-        // Disable the extension UI
-        disableExtension();
-      }
-    });
-
     // Retrieve blacklisted sites from Chrome storage
     chrome.storage.sync.get("blacklistedSites", function (data) {
       const blacklistedSites = data.blacklistedSites || [];
@@ -27,8 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
       // Display the blacklisted sites in the UI
       blacklistedSites.forEach((site) => addBlacklistedSite(site));
     });
-
-    // changes
 
     // Handle form submission
     blacklistForm.addEventListener("submit", function (event) {
@@ -51,13 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
     });
-
-    // Function to disable the extension UI
-    function disableExtension() {
-      blacklistForm.style.display = "none";
-      blacklistedSitesList.innerHTML =
-        "<p>Extension is disabled on this site.</p>";
-    }
 
     // Function to add a blacklisted site to the UI
     function addBlacklistedSite(site) {
