@@ -10,7 +10,7 @@ function TestingComponents() {
 
     const handleButtonClick = () => {
         const randomDate = new Date();
-        setSelectedDate(randomDate);
+        // setSelectedDate(randomDate);
     };
 
 
@@ -31,7 +31,8 @@ function TestingComponents() {
             {/* generate random date with button */}
             <DatePicker
                 label="Select a Date"
-                selected={selectedDate} />
+            // selected={selectedDate} 
+            />
 
         </>
     )
