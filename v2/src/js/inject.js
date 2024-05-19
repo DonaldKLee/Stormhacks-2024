@@ -246,31 +246,35 @@ function modifyTextInput() {
     textInput.type = "password";
   });
 }
-
 function buttonMovement() {
-  const buttons = document.getElementsByTagName("button");
-
-  for (let i = 0; i < buttons.length; i++) {
-    let numClicks = 0;
-
-    buttons[i].addEventListener("mouseover", function (event) {
-      if (numClicks < 3) {
-        let changeX = 40;
-        let changeY = 80;
-
-        // Button movement logic with transition
-        buttons[i].style.transition = "0.3s";
-        buttons[i].style.left = buttons[i].style.left + changeX + "px";
-        buttons[i].style.top = buttons[i].style.top + changeY + "px";
-        buttons[i].style.position = "relative";
-
-        numClicks++;
-        event.preventDefault(); // Prevent button submission
-      }
-    });
+    const buttons = document.getElementsByTagName("button");
+  
+    for (let i = 0; i < buttons.length; i++) {
+      let numClicks = 0;
+  
+      buttons[i].addEventListener("mouseover", function (event) {
+        if (numClicks < 3) {
+          let changeX = 40;
+          let changeY = 80;
+  
+          // Button movement logic with transition
+          buttons[i].style.transition = "0.3s";
+          buttons[i].style.left = parseFloat(buttons[i].style.left || 0) + changeX + "px";
+          buttons[i].style.top = parseFloat(buttons[i].style.top || 0) + changeY + "px";
+          buttons[i].style.position = "relative";
+  
+          if (numClicks === 1) {
+            buttons[i].style.transform = "scale(1.2)";
+            buttons[i].style.opacity = "0.8";
+          }
+  
+          numClicks++;
+          event.preventDefault(); // Prevent button submission
+        }
+      });
+    }
   }
-}
-
+  
 // buttons.forEach(function (submitButton) {
 // submitButton.disabled = true;
 
