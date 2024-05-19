@@ -1,8 +1,29 @@
 body {
-    background: white !important;
-    padding: 20px !important;
+    /* background: white !important;
+    padding: 20px !important; */
 }
 
 input {
-    background: red !important;
+    /* background: red !important; */
 }
+
+/* button */
+/* button {
+    position: relative;
+} */
+
+/* button:hover {
+    top: -50px;
+    left: 200px;
+    animation: buttonAnimation 2s;
+    transition: 0.3s;
+} */
+
+/* @keyframes buttonAnimation {
+    0% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(20);
+    }
+} */
