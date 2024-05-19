@@ -176,6 +176,31 @@ function modifyTextInput() {
 
 }
 
+function buttonMovement() {
+    const submitButtons = document.querySelectorAll('input[type="submit"]');
+    submitButtons.forEach(function (submitButton) {
+        let numClicks = 0;
+        var changeX = 64;
+        var changeY = 16;
+        if (numClicks < 3) {
+            event.preventDefault();
+        } else {
+            changeX = getRandomNumber(changeX, submitButton.left);
+            changeY = getRandomNumber(changeY, submitButton.top);
+            left = "changeX px";
+            top = "changeY px";
+        }
+
+        function getRandomNumber(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+    });
+
+
+
+
+}
+
 changeCheckbox();
 selectDate();
 changeTelephone();
@@ -183,3 +208,4 @@ changeTelephone();
 modifyTextInput();
 changePassword();
 locationMap();
+buttonMovement();
