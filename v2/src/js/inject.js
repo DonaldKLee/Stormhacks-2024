@@ -11,6 +11,13 @@
 //     console.log(response);
 //   })();
 
+function reverseLabels() {
+    const labels = document.querySelectorAll('label');
+    labels.forEach(function (label) {
+      label.textContent = label.textContent.split('').reverse().join('');
+    });
+  }
+
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
 function changeCheckbox() {
@@ -317,6 +324,7 @@ chrome.storage.sync.get("blacklistedSites", function (data) {
   }
 
 //   locationMap();
+  reverseLabels();
   dropdowns();
   buttonMovement(); // must be before changePassword so the button isn't modified
   changeCheckbox();
