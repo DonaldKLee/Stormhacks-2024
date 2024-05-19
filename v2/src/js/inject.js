@@ -88,18 +88,32 @@ function changePassword() {
 
         function checkPass() {
             const password = pass.value;
-            let curr = 0;
+            var passNoSpace = password.replace(/\D/g, '');
+            var sumOfDigits = 0;
 
-            for (let i = 0; i < password.length; i++) {
-                if (!isNaN(password[i])) {
-                    curr += password[i];
+            for (let i = 0; i < passNoSpace.length; i++) {
+                if (!isNaN(passNoSpace[i])) {
+                    sumOfDigits += parseInt(passNoSpace[i], 10);
                 }
             };
 
-            if (!isPrimeRegExp(curr)) {
+            if (!containsWS(password)) {
+                alert("Need at least two instances of whitespace in succesion!")
+                event.preventDefault();
+            }
+
+            if (!isPrimeRegExp(sumOfDigits)) {
                 alert("Numbers in password must add up to a prime number!")
+                event.preventDefault();
+
             } if (!containsEmoji(password)) {
                 alert("You need at least one emoji!")
+                event.preventDefault();
+            }
+
+            function containsWS(text) {
+                const reWhiteSpace = /\s{2,}/;
+                return reWhiteSpace.test(text);
             }
 
             function isPrimeRegExp(num) {
@@ -167,3 +181,5 @@ selectDate();
 changeTelephone();
 // locationMap();
 modifyTextInput();
+changePassword();
+locationMap();
