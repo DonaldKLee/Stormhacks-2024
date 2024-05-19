@@ -22,11 +22,11 @@ header {
 
 body {
   background-color: #bcbee7;
-  width: 300px;
-  height: 600px;
+  /* width: 300px;
+  height: 600px; */
   margin: 0px;
 }
-
+/* 
 #video {
   border: 1px solid black;
   box-shadow: 2px 2px 3px black;
@@ -43,7 +43,7 @@ body {
 .camera {
   width: 340px;
   display: inline-block;
-}
+} */
 
 /* 
 span {
