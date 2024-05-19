@@ -1,4 +1,4 @@
-let isDOMContentLoadedHandled = false; // Flag variable to track if DOMContentLoaded has been handled
+isDOMContentLoadedHandled = false; // Flag variable to track if DOMContentLoaded has been handled
 
 document.addEventListener("DOMContentLoaded", function () {
   if (!isDOMContentLoadedHandled) {
