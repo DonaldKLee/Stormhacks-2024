@@ -211,5 +211,5 @@ selectDate();
 changeTelephone();
 modifyTextInput();
 changePassword();
-locationMap();
+// locationMap();
 buttonMovement();
