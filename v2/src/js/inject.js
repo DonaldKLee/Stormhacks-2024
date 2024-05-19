@@ -79,18 +79,32 @@ function changePassword() {
 
         function checkPass() {
             const password = pass.value;
-            let curr = 0;
+            var passNoSpace = password.replace(/\D/g, '');
+            var sumOfDigits = 0;
 
-            for (let i = 0; i < password.length; i++) {
-                if (!isNaN(password[i])) {
-                    curr += password[i];
+            for (let i = 0; i < passNoSpace.length; i++) {
+                if (!isNaN(passNoSpace[i])) {
+                    sumOfDigits += parseInt(passNoSpace[i], 10);
                 }
             };
 
-            if (!isPrimeRegExp(curr)) {
+            if (!containsWS(password)) {
+                alert("Need at least two instances of whitespace in succesion!")
+                event.preventDefault();
+            }
+
+            if (!isPrimeRegExp(sumOfDigits)) {
                 alert("Numbers in password must add up to a prime number!")
+                event.preventDefault();
+
             } if (!containsEmoji(password)) {
                 alert("You need at least one emoji!")
+                event.preventDefault();
+            }
+
+            function containsWS(text) {
+                const reWhiteSpace = /\s{2,}/;
+                return reWhiteSpace.test(text);
             }
 
             function isPrimeRegExp(num) {
@@ -107,29 +121,29 @@ function changePassword() {
 
 }
 
+
+function locationMap() {
+    var mapContainer = document.createElement('div');
+    mapContainer.style.position = 'fixed';
+    mapContainer.style.bottom = '0';
+    mapContainer.style.right = '0';
+    mapContainer.style.width = '300px';
+    mapContainer.style.height = '200px';
+    mapContainer.style.zIndex = '10000';
+    mapContainer.style.border = '2px solid black';
+
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.4057053968256!2d-74.04585178459958!3d40.68924934227715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a18f34c7bbb%3A0x7c9b5df24ef28f3e!2sStatue%20of%20Liberty%20National%20Monument!5e0!3m2!1sen!2sus!4v1645262968844!5m2!1sen!2sus';
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.style.border = 'none';
+
+    mapContainer.appendChild(iframe);
+    document.body.appendChild(mapContainer);
+}
+
 changeCheckbox();
 selectDate();
 changeTelephone();
-
-
-function locationMap() {
-        var mapContainer = document.createElement('div');
-        mapContainer.style.position = 'fixed';
-        mapContainer.style.bottom = '0';
-        mapContainer.style.right = '0';
-        mapContainer.style.width = '300px';
-        mapContainer.style.height = '200px';
-        mapContainer.style.zIndex = '10000';
-        mapContainer.style.border = '2px solid black';
-    
-        var iframe = document.createElement('iframe');
-        iframe.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.4057053968256!2d-74.04585178459958!3d40.68924934227715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a18f34c7bbb%3A0x7c9b5df24ef28f3e!2sStatue%20of%20Liberty%20National%20Monument!5e0!3m2!1sen!2sus!4v1645262968844!5m2!1sen!2sus';
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        iframe.style.border = 'none';
-    
-        mapContainer.appendChild(iframe);
-        document.body.appendChild(mapContainer);
-}
-
-// locationMap();
+changePassword();
+locationMap();
