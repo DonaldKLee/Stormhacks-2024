@@ -79,26 +79,26 @@ function changePassword() {
         // Calculate the number of bunnies needed to cover the input form
         const inputWidth = pass.offsetWidth;
         const bunnyHeight = pass.offsetHeight;
-        const bunnyWidth = bunnyHeight / 1.5;
+        const bunnyWidth = 50;
 
-        const numBunnies = Math.ceil(inputWidth / bunnyWidth / 2);
+        const numBunnies = Math.ceil(inputWidth / bunnyWidth) - 1;
 
         const bunnyDiv = document.createElement('div');
         bunnyDiv.className = "bunnyPassBlocker";
-        bunnyDiv.style.width = inputWidth + bunnyWidth;
-        bunnyDiv.style.height = pass.offsetHeight;
+        bunnyDiv.style.width = inputWidth + "px";
+        bunnyDiv.style.height = pass.offsetHeight + "px";
         bunnyDiv.style.position = "absolute";
 
         // bunnyDiv.style.marginTop = -pass.offsetHeight + "px";
 
         // Create and attach bunny images
-        for (let i = 1; i < numBunnies; i++) {
+        for (let i = 0; i < numBunnies; i++) {
             const bunny = document.createElement('img');
             bunny.src = "https://raw.githubusercontent.com/DonaldKLee/Stormhacks-2024/main/v2/src/images/mascot.png";
-            // bunny.style.position = "absolute";
             bunny.style.width = "50px";
             bunny.style.height = "auto";
             bunnyDiv.appendChild(bunny)
+            // bunny.style.position = "absolute";
         }
 
         pass.parentNode.insertBefore(bunnyDiv, pass.nextSibling);
