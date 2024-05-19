@@ -20,17 +20,16 @@ input[type=submit] {
 /* 
 @keyframes buttonAnimation {
     0% {
-        /* transform: scale(0.5); */
-margin-top: -10px;
-}
+        transform: scale(0.8);
+        margin-top: 40px;
+    }
+    100% {
+        transform: scale(1);
+        margin-top: 30px;
+    }
+} */
 
-100% {
-    /* transform: scale(1); */
-    margin-top: 10px;
-}
-}
 
-*/
 /* button:hover {
     top: -50px;
     left: 200px;
