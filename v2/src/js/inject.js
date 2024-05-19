@@ -1,11 +1,16 @@
 
-console.log("testing server")
-fetch('http://localhost:3000/')
-    .then(response => response.text())
-    .then(data => {
-        console.log(data);
-        alert(data);
-    });
+chrome.runtime.onMessage.addListener(
+    function (request, sender, sendResponse) {
+      console.log('Received message:', request.data);
+      // Process the received data here
+    }
+  );  
+
+(async () => {
+    const response = await chrome.runtime.sendMessage({greeting: "hello"});
+    // do something with response here, not outside the function
+    console.log(response);
+  })();
 
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
@@ -156,30 +161,20 @@ function modifyTextInput() {
 
     textInputs.forEach(function (textInput) {
         // Change the input type to range and set min/max values
-        textInput
-
-        // Create a new span element to display the value
-        const telValue = document.createElement("span");
-        telValue.id = "telInput" + telInputCounter;
-        telValue.innerHTML = telInput.value;
-
-        // Insert the span element after the input element
-        telInput.parentNode.insertBefore(telValue, telInput.nextSibling);
-
-        // Add an event listener to update the span value when the range input changes
-        telInput.addEventListener("input", function (event) {
-            document.getElementById("telInput" + telInputCounter).innerHTML = event.target.value;
-        });
-
-        // telInputCounter++; // Increment the counter
+        textInput = document.getElementById("");
     });
 
 }
 
+// idea, shrink text boxes and make it password so u cant see it
+// passwords, make it not visible? or shrink it? or make it random characters to troll viewers
+//  OR add mascot infront of it
+
+// 
+
 changeCheckbox();
 selectDate();
 changeTelephone();
-// locationMap();
 modifyTextInput();
 changePassword();
-locationMap();
+// locationMap();
