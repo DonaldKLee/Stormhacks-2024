@@ -165,6 +165,9 @@ function changePassword() {
 
 
 function locationMap() {
+
+    const shippingCountrydefault = 
+
     var mapContainer = document.createElement('div');
     mapContainer.style.position = 'fixed';
     mapContainer.style.bottom = '0';
