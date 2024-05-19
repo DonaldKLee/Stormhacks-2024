@@ -41,11 +41,8 @@ function selectDate() {
     });
 }
 
-changeCheckbox();
-
-
-// alert("hello, world");
-
+changeCheckbox()
+changeDate()
 
 function changeTelephone() {
     const telInputs = document.querySelectorAll('input[type="tel"]');
