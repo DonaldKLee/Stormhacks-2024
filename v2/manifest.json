@@ -1,17 +1,18 @@
 {
-    "version": "1.0.0",
-    "manifest_version": 3,
-    "name": "Stormhacks 2024",
-    "description": "AHHHH",
-    "action": {
-        "default_popup": "popup.html",
-        "default_title": "React Chrome Extension"
-    },
-    "content_scripts": [
-        {
-            "matches": ["<all_urls>"],
-            "css": ["src/css/inject.css"],
-            "js": ["src/js/inject.js"]
-        }
-    ]
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "name": "HackerHare",
+  "description": "HackerHare Virtual Security Extension",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "React Chrome Extension"
+  },
+  "permissions": ["videoCapture"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["src/css/inject.css"],
+      "js": ["src/js/inject.js"]
+    }
+  ]
 }
