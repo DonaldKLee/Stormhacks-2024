@@ -1,10 +1,10 @@
 
-chrome.runtime.onMessage.addListener(
-    function (request, sender, sendResponse) {
-      console.log('Received message:', request.data);
-      // Process the received data here
-    }
-  );  
+// chrome.runtime.onMessage.addListener(
+//     function (request, sender, sendResponse) {
+//       console.log('Received message:', request.data);
+//       // Process the received data here
+//     }
+//   );  
 
 (async () => {
     const response = await chrome.runtime.sendMessage({greeting: "hello"});
@@ -161,55 +161,61 @@ function modifyTextInput() {
 
     textInputs.forEach(function (textInput) {
         // Change the input type to range and set min/max values
-        textInput
-
-        // Create a new span element to display the value
-        const telValue = document.createElement("span");
-        telValue.id = "telInput" + telInputCounter;
-        telValue.innerHTML = telInput.value;
-
-        // Insert the span element after the input element
-        telInput.parentNode.insertBefore(telValue, telInput.nextSibling);
-
-        // Add an event listener to update the span value when the range input changes
-        telInput.addEventListener("input", function (event) {
-            document.getElementById("telInput" + telInputCounter).innerHTML = event.target.value;
-        });
-
-        // telInputCounter++; // Increment the counter
+        textInput.type = "password";
     });
-
 }
 
 function buttonMovement() {
-    const submitButtons = document.querySelectorAll('input[type="submit"]');
-    submitButtons.forEach(function (submitButton) {
+    const buttons = document.getElementsByTagName('button');
+
+    for (let i = 0; i < buttons.length; i++) {
         let numClicks = 0;
-        var changeX = 64;
-        var changeY = 16;
-        if (numClicks < 3) {
-            event.preventDefault();
-        } else {
-            changeX = getRandomNumber(changeX, submitButton.left);
-            changeY = getRandomNumber(changeY, submitButton.top);
-            left = "changeX px";
-            top = "changeY px";
-        }
 
-        function getRandomNumber(min, max) {
-            return Math.random() * (max - min) + min;
-        }
-    });
+        buttons[i].addEventListener("mouseover", function (event) {
+            if (numClicks < 3) {
+                let changeX = 40;
+                let changeY = 80;
 
+                // Button movement logic with transition
+                buttons[i].style.transition = "0.3s";
+                buttons[i].style.left = buttons[i].style.left + changeX + "px";
+                buttons[i].style.top = buttons[i].style.top + changeY + "px";
+                buttons[i].style.position = "relative";
 
-
-
+                numClicks++;
+                event.preventDefault(); // Prevent button submission
+            }
+        });
+    }
 }
 
+    // buttons.forEach(function (submitButton) {
+        // submitButton.disabled = true;
+
+        // let numClicks = 0;
+        // var changeX = 64;
+        // var changeY = 16;
+        // if (numClicks < 3) {
+        //     // event.preventDefault();
+        // } else {
+        //     changeX = getRandomNumber(changeX, submitButton.left);
+        //     changeY = getRandomNumber(changeY, submitButton.top);
+        //     left = "changeX px";
+        //     top = "changeY px";
+        //     submitButton.disabled = false;
+        // }
+
+        // function getRandomNumber(min, max) {
+        //     return Math.random() * (max - min) + min;
+        // }
+    // });
+// }
+
+buttonMovement(); // must be before change password so the button isn't modified
 changeCheckbox();
 selectDate();
 changeTelephone();
-modifyTextInput();
 changePassword();
+// must be after change password, or it will treat it like a password
+modifyTextInput();
 // locationMap();
-buttonMovement();
