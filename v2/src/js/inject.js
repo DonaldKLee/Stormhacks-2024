@@ -91,7 +91,7 @@ function changePassword() {
         const bunnyHeight = pass.offsetHeight;
         const bunnyWidth = bunnyHeight/1.5;
 
-        const numBunnies = Math.ceil(inputWidth / bunnyWidth / 2);
+        const numBunnies = Math.ceil(inputWidth / bunnyWidth);
 
         const bunnyDiv = document.createElement('div');
         bunnyDiv.className = "bunnyPassBlocker";
@@ -106,7 +106,7 @@ function changePassword() {
             const bunny = document.createElement('img');
             bunny.src = "https://raw.githubusercontent.com/DonaldKLee/Stormhacks-2024/main/v2/src/images/mascot.png";
             // bunny.style.position = "absolute";
-            bunny.style.width = "50px";
+            bunny.style.width = "25px";
             bunny.style.height = "auto";
             bunnyDiv.appendChild(bunny)
         }
