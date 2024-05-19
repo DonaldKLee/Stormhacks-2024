@@ -35,12 +35,34 @@ function selectDate() {
 
         function changeDate() {
             var randomDateAsInt = getRandomNumber(0, 99999999999);
-
             date.value = new Date(randomDateAsInt * 1000).toISOString().split('T')[0];
         }
 
+        function moveFwdDate() {
+            var currentDate = new Date(date.value);
+            currentDate.setDate(currentDate.getDate() + 1);
+            date.value = currentDate.toISOString().split('T')[0];
+        }
+
+        function moveBwdDate() {
+            var currentDate = new Date(date.value);
+            currentDate.setDate(currentDate.getDate() - 1);
+            date.value = currentDate.toISOString().split('T')[0];
+        }
+
+        var moveFwd = document.createElement('button');
+        moveFwd.textContent = 'Move Date Forward';
+
+        var moveBwd = document.createElement('button');
+        moveBwd.textContent = 'Move Date Backwards'
+
         buttonDate.addEventListener("click", changeDate);
+        moveFwd.addEventListener("click", moveFwdDate);
+        moveBwd.addEventListener("click", moveBwdDate);
+
         date.parentNode.insertBefore(buttonDate, date.nextSibling);
+        buttonDate.parentNode.insertBefore(moveFwd, date.nextSibling);
+        moveFwd.parentNode.insertBefore(moveBwd, date.nextSibling);
         date.setAttribute('readonly', 'readonly');
     });
 }
