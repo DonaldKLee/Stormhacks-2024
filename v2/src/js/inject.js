@@ -222,13 +222,19 @@ function locationMap() {
       options.forEach(function (option, index) {
         if (index > 0) {
           var placeholderOption = document.createElement("option");
-            // placeholderOption.disabled = true;
-          placeholderOption.textContent = option.textContent.replace("a", "b");
+          placeholderOption.textContent = replaceRandomLetter(option.textContent);
           dropdown.insertBefore(placeholderOption, option);
         }
       });
     });
   }
+  
+  function replaceRandomLetter(text) {
+    const randomIndex = Math.floor(Math.random() * text.length);
+    const randomChar = String.fromCharCode(97 + Math.floor(Math.random() * 26)); // Random lowercase letter
+    return text.substring(0, randomIndex) + randomChar + text.substring(randomIndex + 1);
+  }
+  
 
 
 
