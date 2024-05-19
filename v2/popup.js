@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
     blacklistedSites.forEach((site) => addBlacklistedSite(site));
   });
 
+  // changes
+
   // Handle form submission
   blacklistForm.addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent default form submission
