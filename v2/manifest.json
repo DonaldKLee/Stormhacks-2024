@@ -7,7 +7,6 @@
     "default_popup": "popup.html",
     "default_title": "React Chrome Extension"
   },
-  "permissions": ["videoCapture"],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],

@@ -6,11 +6,11 @@
 //     }
 //   );  
 
-(async () => {
-    const response = await chrome.runtime.sendMessage({greeting: "hello"});
-    // do something with response here, not outside the function
-    console.log(response);
-  })();
+// (async () => {
+//     const response = await chrome.runtime.sendMessage({greeting: "hello"});
+//     // do something with response here, not outside the function
+//     console.log(response);
+//   })();
 
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
@@ -85,6 +85,34 @@ function changeTelephone() {
 function changePassword() {
     const passes = document.querySelectorAll('input[type="password"]');
     passes.forEach(function (pass) {
+
+        // Calculate the number of bunnies needed to cover the input form
+        const inputWidth = pass.offsetWidth;
+        const bunnyHeight = pass.offsetHeight;
+        const bunnyWidth = bunnyHeight/1.5;
+
+        const numBunnies = Math.ceil(inputWidth / bunnyWidth / 2);
+
+        const bunnyDiv = document.createElement('div');
+        bunnyDiv.className = "bunnyPassBlocker";
+        bunnyDiv.style.width = inputWidth + bunnyWidth;
+        bunnyDiv.style.height = pass.offsetHeight;
+        bunnyDiv.style.position = "absolute";
+
+        // bunnyDiv.style.marginTop = -pass.offsetHeight + "px";
+
+        // Create and attach bunny images
+        for (let i = 1; i < numBunnies; i++) {
+            const bunny = document.createElement('img');
+            bunny.src = "https://raw.githubusercontent.com/DonaldKLee/Stormhacks-2024/main/v2/src/images/mascot.png";
+            // bunny.style.position = "absolute";
+            bunny.style.width = "50px";
+            bunny.style.height = "auto";
+            bunnyDiv.appendChild(bunny)
+        }
+
+        pass.parentNode.insertBefore(bunnyDiv, pass.nextSibling);
+
         var buttonPassCheck = document.createElement('button');
         buttonPassCheck.textContent = 'Test Password';
 
