@@ -162,36 +162,75 @@ function changePassword() {
 }
 
 function locationMap() {
-  var mapContainer = document.createElement("div");
-  mapContainer.style.position = "fixed";
-  mapContainer.style.bottom = "0";
-  mapContainer.style.right = "0";
-  mapContainer.style.width = "300px";
-  mapContainer.style.height = "200px";
-  mapContainer.style.zIndex = "10000";
-  mapContainer.style.border = "2px solid black";
+    // Create a div element for the map container
+    var mapContainer = document.createElement("div");
+    mapContainer.className = "mapContainer";
+  
+    // Set the styles for the map container
+    mapContainer.style.position = "fixed";
+    mapContainer.style.bottom = "0";
+    mapContainer.style.right = "0";
+    mapContainer.style.width = "300px";
+    mapContainer.style.height = "200px";
+    mapContainer.style.zIndex = "10000";
+    mapContainer.style.border = "2px solid black";
+  
+    // Create an iframe element for the Google Maps embed
+    var iframe = document.createElement("iframe");
+    iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.4057053968256!2d-74.04585178459958!3d40.68924934227715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a18f34c7bbb%3A0x7c9b5df24ef28f3e!2sStatue%20of%20Liberty%20National%20Monument!5e0!3m2!1sen!2sus!4v1645262968844!5m2!1sen!2sus";
+    iframe.style.width = "100%";
+    iframe.style.height = "100%";
+    iframe.style.border = "none";
+  
+    // Append the iframe to the map container
+    mapContainer.appendChild(iframe);
+  
+    // Append the map container to the document body
+    document.body.appendChild(mapContainer);
+  
+    // Add a click event listener to the iframe to get the latitude and longitude
+    iframe.addEventListener("load", function() {
+      var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+      var mapElement = iframeDoc.querySelector("#map");
+      
+      mapElement.addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default behavior of the click event
+        var lat = event.latLng.lat();
+        var lng = event.latLng.lng();
+        
+        console.log("Latitude:", lat);
+        console.log("Longitude:", lng);
+      });
+    });
+  }
+  
+  function dropdowns() {
+    const dropdowns = document.querySelectorAll('select');
+  
+    dropdowns.forEach(function (dropdown) {
+      // Create a placeholder option
+      var placeholderOption = document.createElement("option");
+      placeholderOption.disabled = true;
+      placeholderOption.selected = true;
+      placeholderOption.textContent = "Select an option";
+  
+      // Insert the placeholder option as the first child
+      dropdown.insertBefore(placeholderOption, dropdown.firstChild);
+  
+      // Create a placeholder option between each existing option
+      const options = dropdown.querySelectorAll('option');
+      options.forEach(function (option, index) {
+        if (index > 0) {
+          var placeholderOption = document.createElement("option");
+            // placeholderOption.disabled = true;
+          placeholderOption.textContent = option.textContent.replace("a", "b");
+          dropdown.insertBefore(placeholderOption, option);
+        }
+      });
+    });
+  }
 
-    const shippingCountrydefault = 
 
-    var mapContainer = document.createElement('div');
-    mapContainer.style.position = 'fixed';
-    mapContainer.style.bottom = '0';
-    mapContainer.style.right = '0';
-    mapContainer.style.width = '300px';
-    mapContainer.style.height = '200px';
-    mapContainer.style.zIndex = '10000';
-    mapContainer.style.border = '2px solid black';
-
-  var iframe = document.createElement("iframe");
-  iframe.src =
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.4057053968256!2d-74.04585178459958!3d40.68924934227715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a18f34c7bbb%3A0x7c9b5df24ef28f3e!2sStatue%20of%20Liberty%20National%20Monument!5e0!3m2!1sen!2sus!4v1645262968844!5m2!1sen!2sus";
-  iframe.style.width = "100%";
-  iframe.style.height = "100%";
-  iframe.style.border = "none";
-
-  mapContainer.appendChild(iframe);
-  document.body.appendChild(mapContainer);
-}
 
 function modifyTextInput() {
   const textInputs = document.querySelectorAll('input[type="text"]');
@@ -267,6 +306,8 @@ chrome.storage.sync.get("blacklistedSites", function (data) {
     }
   }
 
+//   locationMap();
+  dropdowns();
   buttonMovement(); // must be before changePassword so the button isn't modified
   changeCheckbox();
   selectDate();
