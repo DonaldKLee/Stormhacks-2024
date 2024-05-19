@@ -104,7 +104,7 @@ function changePassword() {
     bunnyDiv.style.height = pass.offsetHeight;
     bunnyDiv.style.position = "absolute";
 
-    // bunnyDiv.style.marginTop = -pass.offsetHeight + "px";
+    bunnyDiv.style.marginTop = -pass.offsetHeight + "px";
 
     // Create and attach bunny images
     for (let i = 1; i < numBunnies; i++) {

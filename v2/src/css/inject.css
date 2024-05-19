@@ -20,11 +20,11 @@ input[type=submit] {
 @keyframes buttonAnimation {
     0% {
         transform: scale(0.8);
-        margin-top: -120px;
+        /* margin-top: -120px; */
     }
     100% {
         transform: scale(1);
-        margin-top: -100px;
+        /* margin-top: -100px; */
     }
 }
 
