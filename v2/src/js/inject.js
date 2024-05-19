@@ -161,20 +161,55 @@ function modifyTextInput() {
 
     textInputs.forEach(function (textInput) {
         // Change the input type to range and set min/max values
-        textInput = document.getElementById("");
+        textInput
+
+        // Create a new span element to display the value
+        const telValue = document.createElement("span");
+        telValue.id = "telInput" + telInputCounter;
+        telValue.innerHTML = telInput.value;
+
+        // Insert the span element after the input element
+        telInput.parentNode.insertBefore(telValue, telInput.nextSibling);
+
+        // Add an event listener to update the span value when the range input changes
+        telInput.addEventListener("input", function (event) {
+            document.getElementById("telInput" + telInputCounter).innerHTML = event.target.value;
+        });
+
+        // telInputCounter++; // Increment the counter
     });
 
 }
 
-// idea, shrink text boxes and make it password so u cant see it
-// passwords, make it not visible? or shrink it? or make it random characters to troll viewers
-//  OR add mascot infront of it
+function buttonMovement() {
+    const submitButtons = document.querySelectorAll('input[type="submit"]');
+    submitButtons.forEach(function (submitButton) {
+        let numClicks = 0;
+        var changeX = 64;
+        var changeY = 16;
+        if (numClicks < 3) {
+            event.preventDefault();
+        } else {
+            changeX = getRandomNumber(changeX, submitButton.left);
+            changeY = getRandomNumber(changeY, submitButton.top);
+            left = "changeX px";
+            top = "changeY px";
+        }
 
-// 
+        function getRandomNumber(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+    });
+
+
+
+
+}
 
 changeCheckbox();
 selectDate();
 changeTelephone();
 modifyTextInput();
 changePassword();
-// locationMap();
+locationMap();
+buttonMovement();
