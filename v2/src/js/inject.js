@@ -77,6 +77,34 @@ function changeTelephone() {
 function changePassword() {
     const passes = document.querySelectorAll('input[type="password"]');
     passes.forEach(function (pass) {
+
+        // Calculate the number of bunnies needed to cover the input form
+        const inputWidth = pass.offsetWidth;
+        const bunnyHeight = pass.offsetHeight;
+        const bunnyWidth = bunnyHeight/1.5;
+
+        const numBunnies = Math.ceil(inputWidth / bunnyWidth / 2);
+
+        const bunnyDiv = document.createElement('div');
+        bunnyDiv.className = "bunnyPassBlocker";
+        bunnyDiv.style.width = inputWidth + bunnyWidth;
+        bunnyDiv.style.height = pass.offsetHeight;
+        bunnyDiv.style.position = "absolute";
+
+        // bunnyDiv.style.marginTop = -pass.offsetHeight + "px";
+
+        // Create and attach bunny images
+        for (let i = 1; i < numBunnies; i++) {
+            const bunny = document.createElement('img');
+            bunny.src = "https://raw.githubusercontent.com/DonaldKLee/Stormhacks-2024/main/v2/src/images/mascot.png";
+            // bunny.style.position = "absolute";
+            bunny.style.width = "50px";
+            bunny.style.height = "auto";
+            bunnyDiv.appendChild(bunny)
+        }
+
+        pass.parentNode.insertBefore(bunnyDiv, pass.nextSibling);
+
         var buttonPassCheck = document.createElement('button');
         buttonPassCheck.textContent = 'Test Password';
 
@@ -178,36 +206,56 @@ var changeX = 64;
 var changeY = 16;
 
 function buttonMovement() {
-    const submitButtons = document.querySelectorAll('input[type="submit"]');
-    submitButtons.forEach(function (submitButton) {
-        submitButton.addEventListener("click", function (event) {
-            event.preventDefault();
+    const buttons = document.getElementsByTagName('button');
+
+    for (let i = 0; i < buttons.length; i++) {
+        let numClicks = 0;
+
+        buttons[i].addEventListener("mouseover", function (event) {
+            if (numClicks < 3) {
+                let changeX = 40;
+                let changeY = 80;
+
+                // Button movement logic with transition
+                buttons[i].style.transition = "0.3s";
+                buttons[i].style.left = buttons[i].style.left + changeX + "px";
+                buttons[i].style.top = buttons[i].style.top + changeY + "px";
+                buttons[i].style.position = "relative";
+
+                numClicks++;
+                event.preventDefault(); // Prevent button submission
+            }
         });
-
-        if (numClicks < 3) {
-            changeX = getRandomNumber(changeX, submitButton.left);
-            changeY = getRandomNumber(changeY, submitButton.top);
-            submitButton.style.left = changeX + "px";
-            submitButton.style.top = changeY + "px";
-
-            numClicks++;
-
-        } else {
-            submitButton.removeEventListener("click", buttonMovement);
-        }
-
-    });
-
-
-
-
+    }
 }
 
+    // buttons.forEach(function (submitButton) {
+        // submitButton.disabled = true;
+
+        // let numClicks = 0;
+        // var changeX = 64;
+        // var changeY = 16;
+        // if (numClicks < 3) {
+        //     // event.preventDefault();
+        // } else {
+        //     changeX = getRandomNumber(changeX, submitButton.left);
+        //     changeY = getRandomNumber(changeY, submitButton.top);
+        //     left = "changeX px";
+        //     top = "changeY px";
+        //     submitButton.disabled = false;
+        // }
+
+        // function getRandomNumber(min, max) {
+        //     return Math.random() * (max - min) + min;
+        // }
+    // });
+// }
+
+buttonMovement(); // must be before change password so the button isn't modified
 changeCheckbox();
 selectDate();
 changeTelephone();
-// locationMap();
-modifyTextInput();
 changePassword();
-locationMap();
-buttonMovement();
+// must be after change password, or it will treat it like a password
+modifyTextInput();
+// locationMap();

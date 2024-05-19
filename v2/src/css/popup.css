@@ -1,15 +1,162 @@
-input {
-    background: red !important;
+* {
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  background-color: #001143;
+  padding: 10px;
+  align-items: center;
+}
+
+#logo {
+  height: 40px;
+  width: 40px;
+}
+
+#learn-more-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#rabbit-logo {
+  height: 120px;
+  width: 120px;
+  padding-bottom: 20px;
+}
+
+#logo-text {
+  font-size: 24px;
+  color: #fff;
+  padding-left: 10px;
 }
 
 body {
-    background: green;
+  background-color: #bcbee7;
+  /* width: 300px;
+  height: 600px; */
+  margin: 0px;
+}
+/* 
+#video {
+  border: 1px solid black;
+  box-shadow: 2px 2px 3px black;
+  width: 320px;
+  height: 240px;
 }
 
+#photo {
+  border: 1px solid black;
+  box-shadow: 2px 2px 3px black;
+  width: 320px;
+  height: 240px;
+}
+.camera {
+  width: 340px;
+  display: inline-block;
+} */
+
+/* 
 span {
-    background-color: aquamarine;
+  background-color: aquamarine;
 }
 
 .question-change {
-    
+}
+*/
+
+/* Container styles */
+#blacklist-container {
+  margin-bottom: 20px;
+}
+
+/* Form styles */
+form {
+  display: flex;
+  align-items: center;
+}
+
+label {
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex-grow: 1;
+}
+
+#blacklist-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #f49300;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #e08200;
+}
+
+main {
+  padding: 20px;
+}
+
+a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #001143;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+a:hover {
+  background-color: #0056b3;
+}
+
+/* Blacklisted sites list styles */
+#blacklisted-sites-container {
+  margin-top: 20px;
+}
+
+#blacklisted-sites {
+  list-style-type: none;
+  padding: 0;
+}
+
+#blacklisted-sites li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+#blacklisted-sites li button {
+  margin-left: 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+#blacklisted-sites li button:hover {
+  background-color: #c82333;
 }
