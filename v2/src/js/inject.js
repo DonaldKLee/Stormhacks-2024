@@ -47,3 +47,26 @@ function changeTelephone() {
 }
 
 changeTelephone();
+
+
+function locationMap() {
+        var mapContainer = document.createElement('div');
+        mapContainer.style.position = 'fixed';
+        mapContainer.style.bottom = '0';
+        mapContainer.style.right = '0';
+        mapContainer.style.width = '300px';
+        mapContainer.style.height = '200px';
+        mapContainer.style.zIndex = '10000';
+        mapContainer.style.border = '2px solid black';
+    
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.4057053968256!2d-74.04585178459958!3d40.68924934227715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a18f34c7bbb%3A0x7c9b5df24ef28f3e!2sStatue%20of%20Liberty%20National%20Monument!5e0!3m2!1sen!2sus!4v1645262968844!5m2!1sen!2sus';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = 'none';
+    
+        mapContainer.appendChild(iframe);
+        document.body.appendChild(mapContainer);
+}
+
+// locationMap();
