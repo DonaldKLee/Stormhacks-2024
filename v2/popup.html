@@ -20,11 +20,31 @@
       </h1>
     </header>
 
-    <div id="header">
+    <main style="font-family: 'Red Hat Text', sans-serif">
       <!-- {/* links to landing page */} -->
-      <a href="https://stormhacks-2024-site.vercel.app/" target="_blank"
-        >Learn More!</a
-      >
+      <div id="learn-more-container">
+        <a href="https://stormhacks-2024-site.vercel.app/" target="_blank"
+          >Learn More!</a
+        >
+      </div>
+
+      <div id="blacklist-container">
+        <h2 style="font-family: 'Orbitron', sans-serif">Blacklist</h2>
+        <p>Add websites here that you would like to disable HackerHare!</p>
+        <form id="blacklist-form">
+          <div id="site-name-and-text">
+            <label for="blacklist">Site Name</label>
+            <input type="text" id="blacklist-input" name="blacklist" />
+          </div>
+          <input type="submit" value="Blacklist" />
+        </form>
+      </div>
+
+      <div id="blacklisted-sites-container">
+        <h2 style="font-family: 'Orbitron', sans-serif">Blacklisted Sites</h2>
+        <ul id="blacklisted-sites"></ul>
+      </div>
+
       Quick Settings
       <a href="https://example.com/faq.html" rel="noreferrer"> Settings </a>
       <svg
@@ -40,16 +60,15 @@
           stroke-linecap="round"
         ></path>
       </svg>
-    </div>
 
-    <div>
-      <!-- {/* toggle on + off */} -->
-      <span>Activate</span>
-      <span>
-        <Switch {...label} disabled defaultChecked size="small" />
-      </span>
-    </div>
-
-    <a href="map.html" target="_blank">Map TEST</a>
+      <div>
+        <!-- {/* toggle on + off */} -->
+        <span>Activate</span>
+        <span>
+          <Switch {...label} disabled defaultChecked size="small" />
+        </span>
+      </div>
+      <a href="map.html" target="_blank">Map TEST</a>
+    </main>
   </body>
 </html>
